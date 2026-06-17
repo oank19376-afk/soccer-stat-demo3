@@ -1,26 +1,21 @@
 <template>
-<div id="app">
-<!-- Здесь будут отображаться страницы в зависимости от URL -->
-<RouterView />
-</div>
+<v-app>
+    <!-- Здесь начинается код шапки -->
+    <v-app-bar
+      color="primary"
+      title="Soccer Stat Demo">
+      
+      <template #prepend>
+        <v-app-bar-nav-icon/>
+      </template>
+    </v-app-bar>
+    <!-- Код шапки закончился -->
+
+    <v-main>
+      <v-container fluid>
+        <router-view />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
-<script setup>
-// ничего дополнительного не требуется ,роутер уже глобально доступен
-</script>
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-body {
-font-family: Arial, sans-serif;
-background-color: #f5f5f5;
-}
-#app {
-max-width: 1200px;
-margin: 0 auto;
-padding: 20px;
-}
-</style>
 

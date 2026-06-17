@@ -1,5 +1,8 @@
 <template>
   <div>
+    <v-btn prepend-icon="$vuetify">
+      Button
+    </v-btn>
     <input
       v-model="search"
       placeholder="Поиск лиги"
@@ -85,4 +88,3 @@ cursor: pointer;
 background: #f5f5f5;
 }
 </style>
-

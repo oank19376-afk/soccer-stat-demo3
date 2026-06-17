@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LeaguesPage from '../views/LeaguesPage.vue'
- import LeagueCalendar from '../views/LeagueCalendarPage.vue'
+import matchesPage from '@/views/matchesPage.vue'
 const routes = [
 { path: '/', component: LeaguesPage },
- { path: '/league/:id', component: LeagueCalendar }
+{ path: '/match/:id', component: matchesPage }
 ]
 export default createRouter({
 history: createWebHistory(),
