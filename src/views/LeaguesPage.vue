@@ -18,7 +18,7 @@
       class="league-item"
       @click="goToLeague(league.id)"
     >
-      <strong>{{ league.name }}</strong> — {{ league.country }}
+      <strong>{{ league.name }}</strong> — {{ league.stadium }}
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ const search = ref('')
 // { id: 2, name: 'La Liga', country: 'Испания' },
 // { id: 3, name: 'Bundesliga', country: 'Гемания' }
 // ])
-const error=ref('')
+// const error=ref('')
 
 const participants=ref([])
 // const filteredLeagues = computed(() =>
@@ -51,26 +51,26 @@ const goToLeague = (id) => {
 router.push(`/match/${id}`) // Переходим на маршрут /match/:id
 }
 const fetchParticipants = async()=>{
-  try{ const response=await axios.get(' https://api.sstats.net/leagues')
+  try{ const response=await axios.get('/leagues.json')
   // console.log(response)
-  participants.value=response.data.data
+  participants.value=response.data
 
   }
-  catch(err){
-    if (err.response) {
-// Сервер ответил с ошибкой (4xx или 5xx)
-const status = err.response.status;
-if (status === 401) error.value = 'Ошибка авторизации. Проверьте ключ API.';
-else if (status === 404) error.value = 'Соревнование не найдено.';
-else if (status === 429) error.value = 'Слишком много запросов. Попробуйте завтра.';
-else error.value = `Ошибка сервера (${status}). Попробуйте позже.`;
-} else if (err.request) {
-// Запрос был отправлен, но ответа нет (нет интернета, CORS)
-error.value = 'Нет ответа от сервера. Проверьте соединение.';
-} else {
-// Прочие ошибки, например, при настройке запроса
-error.value = 'Неизвестная ошибка. Обновите страницу.';
-}
+  catch(err){console.log(err)
+//     if (err.response) {
+// // Сервер ответил с ошибкой (4xx или 5xx)
+// const status = err.response.status;
+// if (status === 401) error.value = 'Ошибка авторизации. Проверьте ключ API.';
+// else if (status === 404) error.value = 'Соревнование не найдено.';
+// else if (status === 429) error.value = 'Слишком много запросов. Попробуйте завтра.';
+// else error.value = `Ошибка сервера (${status}). Попробуйте позже.`;
+// } else if (err.request) {
+// // Запрос был отправлен, но ответа нет (нет интернета, CORS)
+// error.value = 'Нет ответа от сервера. Проверьте соединение.';
+// } else {
+// // Прочие ошибки, например, при настройке запроса
+// error.value = 'Неизвестная ошибка. Обновите страницу.';
+// }
   }
 
 }
