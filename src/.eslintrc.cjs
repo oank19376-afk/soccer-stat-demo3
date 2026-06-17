@@ -19,6 +19,7 @@ withDefaults: 'readonly'
 },
 rules: {
 // На первое время можно отключить требование к имени компонента
-'vue/multi-word-component-names': 'off'
+'vue/multi-word-component-names': 'off',
+'vue/valid-v-slot':['error',{allowModifiers:true}]
 }
 }
