@@ -33,7 +33,6 @@
             tile="выбор даты"
           /></v-locale-provider>
 
-
          
          
         </v-menu>
@@ -138,7 +137,6 @@ const fetchMatches=async()=>{
           home_team:m.home_team,
           away_team:m.away_team,
           scoreText:`${m.home_score ?? '-'}:${m.away_score ?? '-'}`
-
 
 
         }))
