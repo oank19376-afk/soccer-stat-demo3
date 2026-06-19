@@ -1,15 +1,44 @@
 <template>
   <div>
-    <v-btn prepend-icon="$vuetify">
+    <!-- <v-btn prepend-icon="$vuetify">
       Button
-    </v-btn>
-    <input
+    </v-btn> -->
+
+
+
+    <!-- <input
       v-model="search"
       placeholder="Поиск лиги"
+    > -->
+
+<v-card
+      class="mx-auto mb-4"
+      color="surface-light"
+      max-width="600"
     >
+      <v-card-text>
+        <v-text-field
+          v-model="search"
+          :loading="loading"
+          append-inner-icon="mdi-magnify"
+          density="compact"
+          label="Поиск лиги"
+          variant="solo"
+          hide-details
+          single-line
+          clearable
+          @click:append-inner="onSearch"
+          @input="onSearch"
+        />
+      </v-card-text>
+    </v-card>
+
+
+    
+
     <!-- <button @click="fetchParticipants">получение данных</button> -->
     
-    <div
+    <!-- <div
       v-for="league in filterParticipants"  
        
        
@@ -19,8 +48,56 @@
       @click="goToLeague(league.id)"
     >
       <strong>{{ league.name }}</strong> — {{ league.stadium }}
-    </div>
+    </div> -->
   </div>
+
+
+
+  <v-row>
+    <v-col
+      v-for="league in filterParticipants"
+      :key="league.id"
+      cols="12"
+      sm="6"
+      md="4"
+      lg="3"
+    >
+      <v-card
+        color="#AFEEEE"   
+        
+        elevation="2"
+        class="league-card"
+        @click="goToLeague(league.id)"
+      >
+        <v-card-title>{{ league.name }}</v-card-title>
+        <!-- <v-card-subtitle>{{ league.country || 'Страна не указана' }}</v-card-subtitle> -->
+        <v-card-text>
+          <v-icon small>mdi-stadium</v-icon>
+          {{ league.stadium }}
+        </v-card-text>
+        <v-card-actions>
+          <v-btn
+            color="#4682B4"
+            size="small"
+            @click.stop="goToLeague(league.id)"
+          >
+            Перейти
+            <v-icon end>
+              mdi-arrow-right
+            </v-icon>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-col>
+  </v-row>
+
+
+
+
+
+
+
+
 </template>
 <script setup>
 import {computed,  ref } from 'vue'
