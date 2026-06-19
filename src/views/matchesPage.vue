@@ -20,21 +20,20 @@
               label="Дата от"
               :model-value="datefrom"
               readonly
-              variant="outlined"
+              variant="filled"
               density="comfortable"
             />
           </template>
-          <v-locale-provider locale="ru"> <v-date-picker
-            v-model="datefrom"
+          <v-locale-provider locale="ru">
+            <v-date-picker
+              v-model="datefrom"
             
             
 
-            header="Выберите дату"
-            tile="выбор даты"
-          /></v-locale-provider>
-
-         
-         
+              header="Выберите дату"
+              tile="выбор даты"
+            />
+          </v-locale-provider>
         </v-menu>
       </v-col>
       <v-col>
@@ -49,12 +48,12 @@
               density="comfortable"
             />
           </template>
-           <v-locale-provider locale="ru"> <v-date-picker
+          <v-locale-provider locale="ru"> <v-date-picker
             v-model="dateto"
-              header="Выберите дату"
+            header="Выберите дату"
             tile="выбор даты"
-          /></v-locale-provider>
-         
+          />
+          </v-locale-provider>
         </v-menu>
       </v-col>
     </v-row>
@@ -66,13 +65,13 @@
         :headers="headers"
         :items="filteredMatches"
       >
-      <template #item.date="{item}">
-        {{ formatDate(item.date)}}
-      </template>
+        <template #item.date="{item}">
+          {{ formatDate(item.date)}}
+        </template>
         <template #item.scoreText="{item}">
           <div>
             <!-- {{ item.home_score }}:{{ item.away_score }} -->
-              <v-chip>{{ item.scoreText }}</v-chip>
+            <v-chip>{{ item.scoreText }}</v-chip>
           </div>
         </template>
       </v-data-table>
